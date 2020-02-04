@@ -5,6 +5,7 @@ import Note from '../Note/Note'
 import CircleButton from '../CircleButton/CircleButton'
 import './NoteListMain.css'
 
+//renders list of data
 export default function NoteListMain(props) {
   return (
     <section className='NoteListMain'>

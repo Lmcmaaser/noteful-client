@@ -25,6 +25,7 @@ export default function NotePageNav(props) {
   )
 }
 
+//history.goBack() method to go back to the previous entry in the browser's history; as you would when clicking the back button
 NotePageNav.defaultProps = {
   history: {
     goBack: () => {}
