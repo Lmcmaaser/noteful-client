@@ -9,6 +9,9 @@ import dummyStore from '../dummy-store';
 import {getNotesForFolder, findNote, findFolder} from '../notes-helpers';
 import './App.css';
 
+// a component dedicated to each path
+// React Router is a library that lets us render different components depending on the URL's path.
+
 class App extends Component {
     state = {
         notes: [],
@@ -39,6 +42,7 @@ class App extends Component {
                     />
                 ))}
                 <Route
+                    // path: A string, the Route component will be looking at the current path for this
                     path="/note/:noteId"
                     render={routeProps => {
                         const {noteId} = routeProps.match.params;
