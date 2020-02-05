@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
-import {Route, Link} from 'react-router-dom';
-import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
+import {Route, Link} from 'react-router-dom'; 
+    //why not BrowserRouter (A <Router> that uses the HTML5 history API (pushState, replaceState and the popstate event) to keep your UI in sync with the URL.)
+import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'; //what is this and why
 import NoteListNav from '../NoteListNav/NoteListNav';
 import NotePageNav from '../NotePageNav/NotePageNav';
 import NoteListMain from '../NoteListMain/NoteListMain';
