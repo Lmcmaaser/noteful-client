@@ -20,14 +20,14 @@ class App extends Component {
 
     componentDidMount() {
         // fake date loading from API call
-        setTimeout(() => this.setState(dummyStore), 600);
+        setTimeout(() => this.setState(dummyStore), 600); //dummyStore is data being used to populate the initial state
     }
 
     renderNavRoutes() {
         const {notes, folders} = this.state;
         return (
             <>
-                {['/', '/folder/:folderId'].map(path => (
+                {['/', '/folder/:folderId'].map(path => ( //why is there not a "<Route path =" before this line of code, like on line 44
                     <Route
                         exact
                         key={path}
