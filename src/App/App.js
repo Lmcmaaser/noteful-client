@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import {Route, Link} from 'react-router-dom'; 
-    // BrowserRouter in index js (A <Router> that uses the HTML5 history API (pushState, replaceState and the popstate event) to keep your UI in sync with the URL.)
+// BrowserRouter in index js (A <Router> that uses the HTML5 history API (pushState, replaceState and the popstate event) to keep your UI in sync with the URL.)
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import NoteListNav from '../NoteListNav/NoteListNav';
 import NotePageNav from '../NotePageNav/NotePageNav';
@@ -21,6 +21,7 @@ class App extends Component {
     };
 
     componentDidMount() {
+        //connection refused line 25-27
         Promise.all([
             fetch(`${config.API_ENDPOINT}/notes`),
             fetch(`${config.API_ENDPOINT}/folders`)

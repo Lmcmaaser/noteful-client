@@ -44,6 +44,4 @@ class NoteListNav extends React.Component {
   }
 }
 
-NoteListNav.defaultProps = {
-  folders: []
-}
+export default NoteListNav;
