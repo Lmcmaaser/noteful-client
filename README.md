@@ -28,3 +28,10 @@ Summary:
 * history object contain a push method for triggering navigation or a goBack method for navigating to the previous page
 
 * Programmatic navigation is useful for navigating after events or in certain conditions such as a successful API response is received or the user is not logged in so they don't have permission to view that route
+
+Requirements
+1. Refactor your Noteful application to use context instead of prop-drilling.
+2. Implement two fetch requests to two endpoints when the application mounts: /folders and /notes. Store the response from these requests using a setState in whichever component you were keeping your dummy state.
+3. Implement the delete button for each note in the list in the main route and folder route.
+4. Implement the delete button on the note page, if the delete is successful, redirect to the / path.
+5. The API calls will be made to a local server called noteful-json-server that you'll need to have running separately to your noteful React application.
