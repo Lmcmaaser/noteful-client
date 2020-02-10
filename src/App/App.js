@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {Route, Link} from 'react-router-dom'; 
+import {Route, Link} from 'react-router-dom';
 // BrowserRouter in index js (A <Router> that uses the HTML5 history API (pushState, replaceState and the popstate event) to keep your UI in sync with the URL.)
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import NoteListNav from '../NoteListNav/NoteListNav';
@@ -52,7 +52,7 @@ class App extends Component {
     renderNavRoutes() {
         return (
             <>
-                {['/', '/folder/:folderId'].map(path => ( 
+                {['/', '/folder/:folderId'].map(path => (
                     <Route
                         exact
                         key={path}
