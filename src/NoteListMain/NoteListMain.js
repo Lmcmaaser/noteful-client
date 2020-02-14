@@ -6,12 +6,13 @@ import CircleButton from '../CircleButton/CircleButton'
 import ApiContext from '../ApiContext'
 import { getNotesForFolder } from '../notes-helpers'
 import './NoteListMain.css'
+//import './AddNote' from '../AddNotes.js'
 
-//renders list of data
+//renders list of notes
 class NoteListMain extends React.Component {
-  // defaultProps is a property in React component used to set default values for the props argument. 
+  // defaultProps is a property in React component used to set default values for the props argument.
   // It will be changed if the prop property is passed.
-  static defaultProps = { 
+  static defaultProps = {
     match: {
       params: {}
     }
