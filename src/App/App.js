@@ -12,8 +12,8 @@ import config from '../config';
 import './App.css';
 
 // a component dedicated to each path
-// React Router is a library that lets us render different components depending on the URL's path.
-
+// React Router is a library that lets us render different components,
+// depending on the URL's path.
 class App extends Component {
     state = {
         notes: [],
@@ -25,6 +25,7 @@ class App extends Component {
         Promise.all([
             fetch(`${config.API_ENDPOINT}/notes`),
             fetch(`${config.API_ENDPOINT}/folders`)
+            //need to submit the name of the new folder/new note
         ])
             .then(([notesRes, foldersRes]) => {
                 if (!notesRes.ok)
@@ -48,6 +49,17 @@ class App extends Component {
             // filter() method creates an array filled with all array elements that pass a test (provided as a function).
         });
     };
+    // handleAddFolder => addIDhere {
+      // this.setState({
+
+      // });
+    // };
+
+    // handleAddNote => addIDHere {
+      // this.setState({
+
+      // });
+    // };
 
     renderNavRoutes() {
         return (

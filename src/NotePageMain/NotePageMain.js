@@ -10,6 +10,7 @@ class NotePageMain extends React.Component {
       params: {}
     }
   }
+
   static contextType = ApiContext
 
   handleDelete = noteID => {
@@ -35,7 +36,7 @@ class NotePageMain extends React.Component {
         </div>
       </section>
     )
-  } 
+  }
 }
 
-export default NotePageMain; 
+export default NotePageMain;

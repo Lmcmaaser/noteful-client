@@ -43,5 +43,6 @@ class NoteListNav extends React.Component {
     )
   }
 }
-
+// NoteListNav__folder-link contains a link to the folders added to the app
+// NoteListNav__num-notes displays the # of notes in each folder
 export default NoteListNav;
