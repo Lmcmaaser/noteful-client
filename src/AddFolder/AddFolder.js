@@ -1,5 +1,6 @@
 import React from 'react'
 import ApiContext from '../ApiContext'
+import PropTypes from 'prop-types';
 // creates a form
 //form lets user input new folder name and captures
 //submits new folder name to the POST /folders endpoint on the server
@@ -8,7 +9,7 @@ import ApiContext from '../ApiContext'
 //Add a button to the navigation to invoke the new form?? circle button? create new folder?
 
 class AddFolder extends React.Component{
-  //or constructor(props)?
+  // use "constructor(props)" instead?
   //defaultProps is used to set default values for the props argument
   // or:
   //static defaultProps = {
@@ -31,7 +32,7 @@ class AddFolder extends React.Component{
     const { name } = this.state;
     console.log('Name: ', name.value);
 
-    fetch(`${config.API_ENDPOINT}/folders/${folderId}`, {
+    fetch(`${config.API_ENDPOINT}/folders/${folderId}`, { //folderID?
       method: 'POST',
       headers: {
         'content-type': 'application/json'
@@ -94,4 +95,5 @@ class AddFolder extends React.Component{
   }
 }
 
+AddFolder.propTypes =
 export default AddFolder;
