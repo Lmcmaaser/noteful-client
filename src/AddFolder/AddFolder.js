@@ -1,6 +1,8 @@
 import React from 'react'
 import ApiContext from '../ApiContext'
 import PropTypes from 'prop-types';
+import config from '../config'
+import ValidationError from '../ValidationError'
 // creates a form
 //form lets user input new folder name and captures
 //submits new folder name to the POST /folders endpoint on the server
@@ -17,6 +19,11 @@ class AddFolder extends React.Component{
       // params: {}
     // }
   // }
+  state = {
+    name: {
+      value: ''
+    }
+  }
   static defaultProps = {
     onPostFolder: () => {},
   }
@@ -32,21 +39,24 @@ class AddFolder extends React.Component{
     const { name } = this.state;
     console.log('Name: ', name.value);
 
-    fetch(`${config.API_ENDPOINT}/folders/${folderId}`, { //folderID?
+    fetch(`${config.API_ENDPOINT}/folders/`, { //folderID?
       method: 'POST',
       headers: {
         'content-type': 'application/json'
       },
+      body: JSON.stringify({
+        name: name.value
+       })
     })
       .then(res => {
         if (!res.ok)
-          return res.json().then(e => Promise.reject(e))
+          return res.json().then(event => Promise.reject(event))
         return res.json()
       })
-      .then(() => {
-        this.context.postFolder(folderId)
+      .then((folder) => {
+        this.context.addFolder(folder)
       // allow parent to perform extra behaviour
-        this.props.onPostFolder(folderId)
+        // this.props.onAddFolder(folder)
       })
       .catch(error => {
         console.error({ error })
@@ -68,12 +78,12 @@ class AddFolder extends React.Component{
     // htmlFor property sets or returns the value of the for attribute of a label
     return (
       <form className="AddFolder" onSubmit={event => this.handleSubmit(event)}>
-        <h3>Add a new folder<h3>
+        <h3>Add a new folder</h3>
         <div className="folder-name-hint">* required field</div>
         <div className="form-group">
           <label htmlFor="name">Name *</label>
           <input type="text" className="AddFolder-control"
-            name="name" id="name" placeholder="Upcoming" onChange={e => this.updateName(event.target.value)}/>
+            name="name" id="name" placeholder="Upcoming" onChange={event => this.updateName(event.target.value)}/>
             {this.state.name.touched && (
               <ValidationError message={nameError} />
             )}
@@ -84,8 +94,8 @@ class AddFolder extends React.Component{
             className="AddFolder-button"
             disabled={
             this.validateName()
-            onClick={this.handleClickSave}
             }
+            onClick={this.handleClickSave}
           >
             Save
           </button>
@@ -95,5 +105,7 @@ class AddFolder extends React.Component{
   }
 }
 
-AddFolder.propTypes =
+AddFolder.propTypes = {
+  value: PropTypes.string.isRequired
+}
 export default AddFolder;

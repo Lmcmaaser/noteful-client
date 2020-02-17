@@ -10,6 +10,8 @@ import ApiContext from '../ApiContext';
 import config from '../config';
 //Node-config organizes hierarchical configurations for your app deployments
 import './App.css';
+import AddNote from '../AddNote/AddNote'
+import AddFolder from '../AddFolder/AddFolder'
 
 // a component dedicated to each path
 // React Router is a library that lets us render different components,
@@ -49,17 +51,18 @@ class App extends Component {
             // filter() method creates an array filled with all array elements that pass a test (provided as a function).
         });
     };
-    // handleAddFolder => addIDhere {
-      // this.setState({
 
-      // });
-    // };
+    handleAddFolder = folder => {
+      this.setState({
+        folders: this.state.folders.concat(folder)
+      });
+    };
 
-    // handleAddNote => addIDHere {
-      // this.setState({
-
-      // });
-    // };
+    handleAddNote = note => {
+      this.setState({
+        notes: this.state.notes.concat(note)
+      });
+    };
 
     renderNavRoutes() {
         return (
@@ -91,6 +94,8 @@ class App extends Component {
                     />
                 ))}
                 <Route path="/note/:noteId" component={NotePageMain} />
+                <Route path="/add-note" component={AddNote} />
+                <Route path="/add-folder" component={AddFolder} />
             </>
         );
     }
@@ -99,7 +104,9 @@ class App extends Component {
         const value = {
             notes: this.state.notes,
             folders: this.state.folders,
-            deleteNote: this.handleDeleteNote
+            deleteNote: this.handleDeleteNote,
+            addFolder: this.handleAddFolder,
+            addNote: this.handleAddNote
         };
         return (
             <ApiContext.Provider value={value}>
