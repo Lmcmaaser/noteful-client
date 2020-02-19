@@ -56,7 +56,8 @@ class AddNote extends React.Component {
         console.error({ error })
       })
     }
-    // displaying a validation message requires a conditional statement
+
+  // displaying a validation message requires a conditional statement
   validateNoteName() {
     const noteName = this.state.noteName.value.trim();
     if (noteName.length === 0) {

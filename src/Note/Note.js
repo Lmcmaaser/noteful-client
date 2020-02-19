@@ -4,6 +4,7 @@ import { format } from 'date-fns'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import ApiContext from '../ApiContext'
 import config from '../config'
+import PropTypes from 'prop-types';
 import './Note.css'
 
 class Note extends React.Component {
@@ -12,10 +13,10 @@ class Note extends React.Component {
   }
 
   static contextType = ApiContext;
-  // contextType is a property 
+  // contextType is a property
   // use a static class field to set the value of your contextType
 
-  // function that responds to the event of the Delete button being clicked 
+  // function that responds to the event of the Delete button being clicked
   handleClickDelete = e => {
     e.preventDefault()
     const noteId = this.props.id
@@ -70,6 +71,12 @@ class Note extends React.Component {
       </div>
     )
   }
+}
+
+Note.propTypes = {
+  name: PropTypes.string,
+  id: PropTypes.string,
+  modified: PropTypes.string
 }
 
 export default Note;

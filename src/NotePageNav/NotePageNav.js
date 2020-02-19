@@ -45,5 +45,5 @@ class NotePageNav extends React.Component {
     )
   }
 }
-
+//PropType required for history or name?
 export default NotePageNav;

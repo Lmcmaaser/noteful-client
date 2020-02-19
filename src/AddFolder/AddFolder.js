@@ -11,14 +11,9 @@ import ValidationError from '../ValidationError'
 //Add a button to the navigation to invoke the new form?? circle button? create new folder?
 
 class AddFolder extends React.Component{
-  // use "constructor(props)" instead?
+
   //defaultProps is used to set default values for the props argument
-  // or:
-  //static defaultProps = {
-    // match: {
-      // params: {}
-    // }
-  // }
+
   state = {
     name: {
       value: ''
@@ -39,7 +34,7 @@ class AddFolder extends React.Component{
     const { name } = this.state;
     console.log('Name: ', name.value);
 
-    fetch(`${config.API_ENDPOINT}/folders/`, { //folderID?
+    fetch(`${config.API_ENDPOINT}/folders/`, { 
       method: 'POST',
       headers: {
         'content-type': 'application/json'
