@@ -6,7 +6,7 @@ import CircleButton from '../CircleButton/CircleButton'
 import ApiContext from '../ApiContext'
 import { getNotesForFolder } from '../notes-helpers'
 import './NoteListMain.css'
-//import './AddNote' from '../AddNotes.js'
+import HasError from '../HasError'
 
 //renders list of notes
 class NoteListMain extends React.Component {
@@ -25,17 +25,19 @@ class NoteListMain extends React.Component {
     const notesForFolder = getNotesForFolder(notes, folderId)
     return (
       <section className='NoteListMain'>
-        <ul>
-          {notesForFolder.map(note =>
-            <li key={note.id}>
-              <Note
-                id={note.id}
-                name={note.name}
-                modified={note.modified}
-              />
-            </li>
-          )}
-        </ul>
+        <HasError>
+          <ul>
+            {notesForFolder.map(note =>
+              <li key={note.id}>
+                <Note
+                  id={note.id}
+                  name={note.name}
+                  modified={note.modified}
+                />
+              </li>
+            )}
+          </ul>
+        </HasError>
         <div className='NoteListMain__button-container'>
           <CircleButton
             tag={Link}

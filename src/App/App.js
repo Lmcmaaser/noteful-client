@@ -12,6 +12,7 @@ import config from '../config';
 import './App.css';
 import AddNote from '../AddNote/AddNote'
 import AddFolder from '../AddFolder/AddFolder'
+import HasError from '../HasError'
 
 // a component dedicated to each path
 // React Router is a library that lets us render different components,
@@ -111,14 +112,18 @@ class App extends Component {
         return (
             <ApiContext.Provider value={value}>
                 <div className="App">
+                  <HasError>
                     <nav className="App__nav">{this.renderNavRoutes()}</nav>
+                  </HasError>
                     <header className="App__header">
                         <h1>
                             <Link to="/">Noteful</Link>{' '}
                             <FontAwesomeIcon icon="check-double" />
                         </h1>
                     </header>
-                    <main className="App__main">{this.renderMainRoutes()}</main>
+                    <HasError>
+                      <main className="App__main">{this.renderMainRoutes()}</main>
+                    </HasError>
                 </div>
             </ApiContext.Provider>
         );

@@ -3,6 +3,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import CircleButton from '../CircleButton/CircleButton'
 import ApiContext from '../ApiContext'
 import { findNote, findFolder } from '../notes-helpers'
+import HasError from '../HasError'
 import './NotePageNav.css'
 
 class NotePageNav extends React.Component {
@@ -26,16 +27,18 @@ class NotePageNav extends React.Component {
     const folder = findFolder(folders, note.folderId)
     return (
       <div className='NotePageNav'>
-        <CircleButton
-          tag='button'
-          role='link'
-          onClick={() => this.props.history.goBack()}
-          className='NotePageNav__back-button'
-        >
-          <FontAwesomeIcon icon='chevron-left' />
-          <br />
-          Back
-        </CircleButton>
+        <HasError>
+          <CircleButton
+            tag='button'
+            role='link'
+            onClick={() => this.props.history.goBack()}
+            className='NotePageNav__back-button'
+          >
+            <FontAwesomeIcon icon='chevron-left' />
+            <br />
+            Back
+          </CircleButton>
+        </HasError>
         {folder && (
           <h3 className='NotePageNav__folder-name'>
             {folder.name}
