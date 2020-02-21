@@ -6,7 +6,6 @@ import ApiContext from '../ApiContext'
 import config from '../config'
 import PropTypes from 'prop-types';
 import './Note.css'
-import HasError from '../HasError'
 
 class Note extends React.Component {
   static defaultProps = {
@@ -46,13 +45,11 @@ class Note extends React.Component {
     const { name, id, modified } = this.props
     return (
       <div className='Note'>
-        <HasError>
           <h2 className='Note__title'>
             <Link to={`/note/${id}`}>
               {name}
             </Link>
           </h2>
-        </HasError>
         <button
           className='Note__delete'
           type='button'
@@ -63,7 +60,6 @@ class Note extends React.Component {
           remove
         </button>
         <div className='Note__dates'>
-          <HasError>
             <div className='Note__dates-modified'>
               Modified
               {' '}
@@ -71,7 +67,6 @@ class Note extends React.Component {
                 {format(modified, 'Do MMM YYYY')}
               </span>
             </div>
-          </HasError>
         </div>
       </div>
     )
