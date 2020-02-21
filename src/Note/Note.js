@@ -26,6 +26,11 @@ class Note extends React.Component {
       headers: {
         'content-type': 'application/json'
       },
+      //trying to get date to show in detail view...
+      body: JSON.stringify({
+        name: noteId.value,
+        modified: new Date()
+       })
     })
       .then(res => {
         if (!res.ok)
