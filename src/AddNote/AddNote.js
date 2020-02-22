@@ -1,7 +1,6 @@
 import React from 'react'
 import ApiContext from '../ApiContext'
 import ValidationError from '../ValidationError'
-import PropTypes from 'prop-types';
 import config from '../config'
 // creates a form
 //form lets user input new note name and captures
@@ -30,7 +29,6 @@ class AddNote extends React.Component {
   handleSubmit(event) {
     event.preventDefault();
     const { noteName } = this.state;
-    console.log('noteName: ', noteName.value);
 
     fetch(`${config.API_ENDPOINT}/notes/`, { //folderID?
       method: 'POST',
@@ -39,6 +37,8 @@ class AddNote extends React.Component {
       },
       body: JSON.stringify({
         name: noteName.value,
+        content: event.target.content.value,
+        folderId: event.target.folderId.value,
         modified: new Date()
        })
     })
@@ -49,6 +49,7 @@ class AddNote extends React.Component {
       })
       .then((note) => {
         this.context.addNote(note)
+        this.props.history.goBack()
       // allow parent to perform extra behaviour
         // this.props.onAddFolder(folder)
       })
@@ -79,6 +80,12 @@ class AddNote extends React.Component {
             {this.state.noteName.touched && (
               <ValidationError message={noteNameError} />
             )}
+          <textarea name='content'></textarea>
+          <select name="folderId">
+            {this.context.folders.map(folder =>
+              <option key={folder.id} value={folder.id}>{folder.name}</option>
+            )}
+          </select>
         </div>
         <div>
           <button
@@ -94,10 +101,6 @@ class AddNote extends React.Component {
       </form>
     )
   }
-}
-
-AddNote.propTypes = {
-  value: PropTypes.string.isRequired
 }
 
 export default AddNote;

@@ -4,6 +4,7 @@ import ApiContext from '../ApiContext'
 import { findNote } from '../notes-helpers'
 import './NotePageMain.css'
 import HasError from '../HasError'
+import PropTypes from 'prop-types'
 
 class NotePageMain extends React.Component {
   static defaultProps = {
@@ -14,14 +15,14 @@ class NotePageMain extends React.Component {
 
   static contextType = ApiContext
 
-  handleDelete = noteID => {
+  handleDelete = noteId => {
     this.props.history.push('/')
   }
 
   render () {
     const { notes=[] } = this.context
-    const { noteID } = this.props.match.params
-    const note = findNote(notes, noteID) ||{content: '' }
+    const { noteId } = this.props.match.params
+    const note = findNote(notes, noteId) ||{content: '' }
     return (
       <section className='NotePageMain'>
         <HasError>
@@ -29,7 +30,7 @@ class NotePageMain extends React.Component {
             id={note.id}
             name={note.name}
             modified={note.modified}
-            onDeleteNote={this.handleDeleteNote}
+            onDeleteNote={this.handleDelete}
           />
         </HasError>
           <div className='NotePageMain__content'>
@@ -40,6 +41,10 @@ class NotePageMain extends React.Component {
       </section>
     )
   }
+}
+
+NotePageMain.propTypes = {
+  match: PropTypes.object
 }
 
 export default NotePageMain;

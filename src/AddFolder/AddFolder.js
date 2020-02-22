@@ -1,6 +1,5 @@
 import React from 'react'
 import ApiContext from '../ApiContext'
-import PropTypes from 'prop-types';
 import config from '../config'
 import ValidationError from '../ValidationError'
 // creates a form
@@ -32,9 +31,8 @@ class AddFolder extends React.Component{
   handleSubmit(event) {
     event.preventDefault();
     const { name } = this.state;
-    console.log('Name: ', name.value);
 
-    fetch(`${config.API_ENDPOINT}/folders/`, { 
+    fetch(`${config.API_ENDPOINT}/folders/`, {
       method: 'POST',
       headers: {
         'content-type': 'application/json'
@@ -50,6 +48,7 @@ class AddFolder extends React.Component{
       })
       .then((folder) => {
         this.context.addFolder(folder)
+        this.props.history.goBack()
       // allow parent to perform extra behaviour
         // this.props.onAddFolder(folder)
       })
@@ -100,7 +99,5 @@ class AddFolder extends React.Component{
   }
 }
 
-AddFolder.propTypes = {
-  value: PropTypes.string.isRequired
-}
+
 export default AddFolder;

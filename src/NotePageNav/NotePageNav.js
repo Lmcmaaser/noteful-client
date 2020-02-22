@@ -5,6 +5,7 @@ import ApiContext from '../ApiContext'
 import { findNote, findFolder } from '../notes-helpers'
 import HasError from '../HasError'
 import './NotePageNav.css'
+import PropTypes from 'prop-types'
 
 class NotePageNav extends React.Component {
   //history.goBack() method to go back to the previous entry in the browser's history; as you would when clicking the back button
@@ -48,5 +49,7 @@ class NotePageNav extends React.Component {
     )
   }
 }
-//PropType required for history or name?
+NotePageNav.propTypes = {
+  match: PropTypes.object
+}
 export default NotePageNav;

@@ -7,6 +7,7 @@ import ApiContext from '../ApiContext'
 import { getNotesForFolder } from '../notes-helpers'
 import './NoteListMain.css'
 import HasError from '../HasError'
+import PropTypes from 'prop-types'
 
 //renders list of notes
 class NoteListMain extends React.Component {
@@ -53,6 +54,10 @@ class NoteListMain extends React.Component {
       </section>
     )
   }
+}
+
+NoteListMain.propTypes = {
+  match: PropTypes.object
 }
 
 export default NoteListMain;

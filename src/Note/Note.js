@@ -23,20 +23,20 @@ class Note extends React.Component {
 
     fetch(`${config.API_ENDPOINT}/notes/${noteId}`, {
       method: 'DELETE',
-      headers: {
+      /*headers: {
         'content-type': 'application/json'
       },
       //trying to get date to show in detail view...
-      body: JSON.stringify({
+      /*body: JSON.stringify({
         name: noteId.value,
         modified: new Date()
-       })
+      })   */
     })
-      .then(res => {
+      /*.then(res => {
         if (!res.ok)
           return res.json().then(e => Promise.reject(e))
         return res.json()
-      })
+      })*/
       .then(() => {
         this.context.deleteNote(noteId)
         // allow parent to perform extra behaviour
@@ -81,7 +81,8 @@ class Note extends React.Component {
 Note.propTypes = {
   name: PropTypes.string,
   id: PropTypes.string,
-  modified: PropTypes.string
+  modified: PropTypes.string,
+  onDeleteNote: PropTypes.func
 }
 
 export default Note;
