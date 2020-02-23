@@ -11,8 +11,7 @@ import App from './App/App'
 
 library.add(faPlus, faChevronLeft, faTrashAlt, faCheckDouble)
 
-+console.log(process.env)
-+
+console.log(process.env)
 
 ReactDOM.render(
   <BrowserRouter>

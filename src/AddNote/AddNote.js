@@ -52,7 +52,6 @@ class AddNote extends React.Component {
         this.context.addNote(note)
         this.props.history.goBack()
       // allow parent to perform extra behaviour
-        // this.props.onAddFolder(folder)
       })
       .catch(error => {
         console.error({ error })
@@ -75,16 +74,34 @@ class AddNote extends React.Component {
         <h3>Add a new note</h3>
         <div className="note-name-hint">* required field</div>
         <div className="form-group">
-          <label htmlFor="noteName">Name * </label>
-          <input type="text" className="AddNote-control"
-            name="noteName" id="noteName" placeholder="Antelope" onChange={event => this.updateNoteName(event.target.value)}/>
+          <label className="noteName" htmlFor="noteName">Name * </label>
+          <input
+            type="text"
+            name="noteName"
+            id="noteName"
+            aria-label="note name"
+            aria-required="true"
+            aria-invalid="true"
+            placeholder="Antelope"
+            onChange={event => this.updateNoteName(event.target.value)}/>
             {this.state.noteName.touched && (
               <ValidationError message={noteNameError} />
             )}
-          <label htmlFor="noteContent">Content * </label>
-          <textarea name='content'></textarea>
-          <label htmlFor="noteFolder">Select a folder for your note * </label>
-          <select name="folderId">
+          <label className="noteContent" htmlFor="noteContent">Content * </label>
+          <textarea
+            name='content'
+            aria-label="note content"
+            aria-required="true"
+            aria-invalid="true"
+          >
+          </textarea>
+          <label className="noteFolder" htmlFor="noteFolder">Select a folder for your note * </label>
+          <select
+            name="folderId"
+            aria-label="select note folder"
+            aria-required="true"
+            aria-invalid="true"
+          >
             {this.context.folders.map(folder =>
               <option key={folder.id} value={folder.id}>{folder.name}</option>
             )}
@@ -107,3 +124,5 @@ class AddNote extends React.Component {
 }
 
 export default AddNote;
+// htmlFor is used to set or return the value of the for attribute of a <label> element.
+// The For attribute defines which form element will be labeled.
