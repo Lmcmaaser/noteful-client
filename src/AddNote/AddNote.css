@@ -11,10 +11,14 @@
   text-align: center;
   text-decoration: none;
   width: 60px;
-  margin: 45px 20px 25px auto
+  margin: 45px 20px 25px auto;
 }
 
 .AddNote-button:hover {
   background-color: #FFB72F;
   cursor: pointer;
+}
+
+.AddNote-control {
+  margin: 45px 20px 25px auto;
 }

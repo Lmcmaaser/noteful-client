@@ -75,13 +75,15 @@ class AddNote extends React.Component {
         <h3>Add a new note</h3>
         <div className="note-name-hint">* required field</div>
         <div className="form-group">
-          <label htmlFor="noteName">Name *</label>
+          <label htmlFor="noteName">Name * </label>
           <input type="text" className="AddNote-control"
             name="noteName" id="noteName" placeholder="Antelope" onChange={event => this.updateNoteName(event.target.value)}/>
             {this.state.noteName.touched && (
               <ValidationError message={noteNameError} />
             )}
+          <label htmlFor="noteContent">Content * </label>
           <textarea name='content'></textarea>
+          <label htmlFor="noteFolder">Select a folder for your note * </label>
           <select name="folderId">
             {this.context.folders.map(folder =>
               <option key={folder.id} value={folder.id}>{folder.name}</option>
