@@ -19,8 +19,13 @@ class AddNote extends React.Component {
     match: {
       params: {}
     }
+
   }
   static contextType = ApiContext
+  constructor(props) {
+    super(props)
+    this.noteName = React.createRef();
+  }
 
   // handler to update state properties
   updateNoteName(noteName) {
@@ -61,9 +66,14 @@ class AddNote extends React.Component {
   // displaying a validation message requires a conditional statement
   validateNoteName() {
     const noteName = this.state.noteName.value.trim();
+    if (!this.state.noteName.touched) {
+      return 
+    }
     if (noteName.length === 0) {
+      this.noteName.current.focus();
       return "Note name is required";
     } else if (noteName.length < 3) {
+      this.noteName.current.focus();
       return "Note name must be at least 3 characters long";
     }
   }
@@ -81,26 +91,24 @@ class AddNote extends React.Component {
             id="noteName"
             aria-label="note name"
             aria-required="true"
-            aria-invalid="true"
+            aria-invalid={ this.state.noteName.touched && !!noteNameError }
+            aria-describedby="noteNameError"
             placeholder="Antelope"
+            ref={this.noteName}
             onChange={event => this.updateNoteName(event.target.value)}/>
             {this.state.noteName.touched && (
-              <ValidationError message={noteNameError} />
+              <ValidationError message={noteNameError} id="noteNameError"/>
             )}
           <label className="noteContent" htmlFor="noteContent">Content * </label>
           <textarea
             name='content'
             aria-label="note content"
-            aria-required="true"
-            aria-invalid="true"
           >
           </textarea>
           <label className="noteFolder" htmlFor="noteFolder">Select a folder for your note * </label>
           <select
             name="folderId"
             aria-label="select note folder"
-            aria-required="true"
-            aria-invalid="true"
           >
             {this.context.folders.map(folder =>
               <option key={folder.id} value={folder.id}>{folder.name}</option>
