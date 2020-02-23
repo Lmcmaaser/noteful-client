@@ -2,6 +2,7 @@ import React from 'react'
 import ApiContext from '../ApiContext'
 import ValidationError from '../ValidationError'
 import config from '../config'
+import './AddNote.css'
 // creates a form
 //form lets user input new note name and captures
 //submits new note name to the POST /notes endpoint on the server

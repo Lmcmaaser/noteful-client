@@ -2,6 +2,7 @@ import React from 'react'
 import ApiContext from '../ApiContext'
 import config from '../config'
 import ValidationError from '../ValidationError'
+import './AddFolder.css'
 // creates a form
 //form lets user input new folder name and captures
 //submits new folder name to the POST /folders endpoint on the server
