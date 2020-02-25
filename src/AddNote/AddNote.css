@@ -17,7 +17,7 @@
   text-align: center;
   text-decoration: none;
   width: 60px;
-  margin: 45px 20px 25px auto;
+  margin: 20px 20px 25px auto;
 }
 
 .AddNote-button:hover {
@@ -48,11 +48,27 @@ label {
   font-weight: bold;
   text-align: left;
   color: white;
-  margin: 15px 10px 20px;
+  margin: 15px 10px;
 }
 
 /* noteName is the input */
 #noteName {
+  width: 50%;
+  height: 35px;
+  border: white;
+  border-radius: 4px;
+  margin: 10px 15px;
+}
+
+textarea {
+  width: 50%;
+  height: 35px;
+  border: white;
+  border-radius: 4px;
+  margin: 10px 15px;
+}
+
+select {
   width: 50%;
   height: 35px;
   border: white;
