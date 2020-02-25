@@ -1,3 +1,8 @@
+.AddFolder {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
 
 .AddFolder-button {
   background-color: #cacaca;
@@ -17,4 +22,33 @@
 .AddFolder-button:hover {
   background-color: #FFB72F;
   cursor: pointer;
+}
+
+h3 {
+  margin: 15px;
+}
+
+.form-group {
+  margin: 20px 10px;
+}
+
+label {
+  font-size: 16px;
+  font-weight: bold;
+  text-align: left;
+  color: white;
+  margin: 15px 10px 20px;
+}
+
+.folder-name-hint {
+  font-size: 16px;
+  color: white;
+  margin: 10px 15px;
+}
+
+#name {
+  width: 50%;
+  height: 35px;
+  border: white;
+  border-radius: 4px;
 }

@@ -36,7 +36,7 @@ class AddNote extends React.Component {
     event.preventDefault();
     const { noteName } = this.state;
 
-    fetch(`${config.API_ENDPOINT}/notes/`, { //folderID?
+    fetch(`${config.API_ENDPOINT}/notes/`, {
       method: 'POST',
       headers: {
         'content-type': 'application/json'
@@ -67,7 +67,7 @@ class AddNote extends React.Component {
   validateNoteName() {
     const noteName = this.state.noteName.value.trim();
     if (!this.state.noteName.touched) {
-      return 
+      return
     }
     if (noteName.length === 0) {
       this.noteName.current.focus();
@@ -84,7 +84,7 @@ class AddNote extends React.Component {
         <h3>Add a new note</h3>
         <div className="note-name-hint">* required field</div>
         <div className="form-group">
-          <label className="noteName" htmlFor="noteName">Name * </label>
+          <label htmlFor="noteName">Name * </label>
           <input
             type="text"
             name="noteName"

@@ -23,7 +23,10 @@ class AddFolder extends React.Component{
     onPostFolder: () => {},
   }
   static contextType = ApiContext
-
+  constructor(props) {
+    super(props)
+    this.name = React.createRef();
+  }
   // handler to update state properties
   updateName(name) {
     this.setState({name: {value: name, touched: true}});
@@ -61,6 +64,9 @@ class AddFolder extends React.Component{
     // displaying a validation message requires a conditional statement
     validateName() {
       const name = this.state.name.value.trim();
+      if (!this.state.name.touched) {
+        return
+      }
       if (name.length === 0) {
         return "Folder name is required";
       } else if (name.length < 3) {
@@ -76,9 +82,18 @@ class AddFolder extends React.Component{
         <h3>Add a new folder</h3>
         <div className="folder-name-hint">* required field</div>
         <div className="form-group">
-          <label htmlFor="name">Name *</label>
-          <input type="text" className="AddFolder-control"
-            name="name" id="name" placeholder="Upcoming" onChange={event => this.updateName(event.target.value)}/>
+          <label htmlFor="name">Name * </label>
+          <input
+            type="text"
+            name="name"
+            id="name"
+            placeholder="Upcoming"
+            aria-label="folder name"
+            aria-required="true"
+            aria-invalid={ this.state.name.touched && !!nameError }
+            aria-describedby="nameError"
+            ref={this.name}
+            onChange={event => this.updateName(event.target.value)}/>
             {this.state.name.touched && (
               <ValidationError message={nameError} />
             )}

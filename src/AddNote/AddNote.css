@@ -25,8 +25,22 @@
   cursor: pointer;
 }
 
-#noteName {
-  margin: 45px 20px 25px auto;
+h3 {
+  color: white;
+  margin: 15px;
+}
+
+.note-name-hint {
+  font-size: 16px;
+  color: white;
+  margin: 10px 15px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin: 20px 10px;
 }
 
 label {
@@ -34,13 +48,14 @@ label {
   font-weight: bold;
   text-align: left;
   color: white;
-  margin: 15px auto;
+  margin: 15px 10px 20px;
 }
 
-h3 {
-  color: white;
-}
-
-.note-name-hint {
-  color: white;
+/* noteName is the input */
+#noteName {
+  width: 50%;
+  height: 35px;
+  border: white;
+  border-radius: 4px;
+  margin: 10px 15px;
 }
