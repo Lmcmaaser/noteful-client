@@ -44,7 +44,7 @@ class AddNote extends React.Component {
       body: JSON.stringify({
         name: noteName.value,
         content: event.target.content.value,
-        folderId: event.target.folderId.value,
+        folderid: event.target.folderid.value,
         modified: new Date()
        })
     })
@@ -107,7 +107,7 @@ class AddNote extends React.Component {
           </textarea>
           <label className="noteFolder" htmlFor="noteFolder">Select a folder for your note * </label>
           <select
-            name="folderId"
+            name="folderid"
             aria-label="select note folder"
           >
             {this.context.folders.map(folder =>

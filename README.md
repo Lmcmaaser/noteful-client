@@ -4,7 +4,7 @@ See: https://reacttraining.com/react-router/
 1. npm install react-router-dom
 2. Open your ./src/index.js file, import the BrowserRouter component from 'react-router-dom' and wrap it around your whole App
 3. BrowserRouter component adds the capabilities of React Router to your web application
-4. Link component will use a browser feature and some JavaScript to "pretend" to do a complete page load. 
+4. Link component will use a browser feature and some JavaScript to "pretend" to do a complete page load.
     - Link component doesn't work with the href prop, instead, we use the to prop
 5. History is another library of react-router
     - use history to do various things such as subscribing to navigation changes, checking how many navigation events have taken place, and programmatically navigating
@@ -35,3 +35,7 @@ Requirements
 3. Implement the delete button for each note in the list in the main route and folder route.
 4. Implement the delete button on the note page, if the delete is successful, redirect to the / path.
 5. The API calls will be made to a local server called noteful-json-server that you'll need to have running separately to your noteful React application.
+
+Requirements
+
+React client updated with the URL of the server. Client can fetch the data from the remote server. React client deployed to Zeit. 

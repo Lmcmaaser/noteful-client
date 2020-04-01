@@ -22,6 +22,29 @@ class App extends Component {
         folders: []
     };
 
+    handleAddNote = note => {
+      this.setState({
+        notes: this.state.notes.concat(note)
+      })
+    };
+    handleAddFolder = folder => {
+      this.setState({
+        folders: this.state.folders.concat(folder)
+      })
+    };
+
+    handleDeleteNote = noteId => {
+        this.setState({
+            notes: this.state.notes.filter(note => note.id !== noteId)
+            // filter() method creates an array filled with all array elements that pass a test (provided as a function).
+        })
+    };
+    handleDeleteFolder = folderid => {
+      this.setState({
+        folders: this.state.folders.filter(folder => folder.id !== folderid)
+      })
+    };
+
     componentDidMount() {
         //connection refused line 25-27
         Promise.all([
@@ -45,29 +68,10 @@ class App extends Component {
             });
     }
 
-    handleDeleteNote = noteId => {
-        this.setState({
-            notes: this.state.notes.filter(note => note.id !== noteId)
-            // filter() method creates an array filled with all array elements that pass a test (provided as a function).
-        });
-    };
-
-    handleAddFolder = folder => {
-      this.setState({
-        folders: this.state.folders.concat(folder)
-      });
-    };
-
-    handleAddNote = note => {
-      this.setState({
-        notes: this.state.notes.concat(note)
-      });
-    };
-
     renderNavRoutes() {
         return (
             <>
-                {['/', '/folder/:folderId'].map(path => (
+                {['/', '/folder/:folderid'].map(path => (
                     <Route
                         exact
                         key={path}
@@ -85,7 +89,7 @@ class App extends Component {
     renderMainRoutes() {
         return (
             <>
-                {['/', '/folder/:folderId'].map(path => (
+                {['/', '/folder/:folderid'].map(path => (
                     <Route
                         exact
                         key={path}
