@@ -46,7 +46,6 @@ class App extends Component {
     };
 
     componentDidMount() {
-        //connection refused line 25-27
         Promise.all([
             fetch(`${config.API_ENDPOINT}/notes`),
             fetch(`${config.API_ENDPOINT}/folders`)
