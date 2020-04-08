@@ -47,8 +47,20 @@ class App extends Component {
 
     componentDidMount() {
         Promise.all([
-            fetch(`${config.API_ENDPOINT}/notes`),
-            fetch(`${config.API_ENDPOINT}/folders`)
+            fetch(`${config.API_ENDPOINT}/notes`, {
+              method: 'GET',
+              headers: {
+                'content-type': 'application/json',
+                'authorization': `bearer ${config.API_KEY}`
+              }
+            }),
+            fetch(`${config.API_ENDPOINT}/folders`, {
+              method: 'GET',
+              headers: {
+                'content-type': 'application/json',
+                'authorization': `bearer ${config.API_KEY}`
+            }
+          })
             //need to submit the name of the new folder/new note
         ])
             .then(([notesRes, foldersRes]) => {

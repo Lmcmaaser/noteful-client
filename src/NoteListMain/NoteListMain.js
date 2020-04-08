@@ -22,17 +22,19 @@ class NoteListMain extends React.Component {
   static contextType = ApiContext
   render () {
     const { folderid } = this.props.match.params
+    console.log(folderid);
     const { notes=[] } = this.context
     const notesForFolder = getNotesForFolder(notes, folderid)
+    console.log(notesForFolder);
     return (
       <section className='NoteListMain'>
         <HasError>
           <ul>
-            {notesForFolder.map(note =>
-              <li key={note.id}>
+            {notesForFolder.map((note) =>
+              <li key={note.noteId} note={note}>
                 <Note
-                  id={note.id}
-                  name={note.name}
+                  id={note.noteId}
+                  name={note.title}
                   modified={note.modified}
                 />
               </li>

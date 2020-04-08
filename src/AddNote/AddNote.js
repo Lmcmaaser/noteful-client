@@ -35,19 +35,21 @@ class AddNote extends React.Component {
   handleSubmit(event) {
     event.preventDefault();
     const { noteName } = this.state;
-
+    console.log(event.target.content.value);
+    console.log(event.target.folderid.value);
+    const note = {
+      title: noteName.value,
+      content: event.target.content.value,
+      folderid: event.target.folderid.value
+      // modified: new Date()
+    }
     fetch(`${config.API_ENDPOINT}/notes`, {
       method: 'POST',
       headers: {
         'Authorization': `bearer ${config.API_KEY}`,
         'content-type': 'application/json'
       },
-      body: JSON.stringify({
-        name: noteName.value,
-        content: event.target.content.value,
-        folderid: event.target.folderid.value,
-        modified: new Date()
-       })
+      body: JSON.stringify(note)
     })
       .then(res => {
         if (!res.ok)
@@ -112,7 +114,7 @@ class AddNote extends React.Component {
             aria-label="select note folder"
           >
             {this.context.folders.map(folder =>
-              <option key={folder.id} value={folder.id}>{folder.name}</option>
+              <option key={folder.folderid} value={folder.folderid}>{folder.title}</option>
             )}
           </select>
         </div>
