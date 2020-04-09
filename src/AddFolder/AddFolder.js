@@ -36,6 +36,7 @@ class AddFolder extends React.Component{
     event.preventDefault();
     // form field from event
     const { name } = this.state;
+    console.log(name);
     const folder = {
       title: name.value
     };
