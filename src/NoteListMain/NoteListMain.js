@@ -22,10 +22,9 @@ class NoteListMain extends React.Component {
   static contextType = ApiContext
   render () {
     const { folderid } = this.props.match.params
-    console.log(folderid);
     const { notes=[] } = this.context
     const notesForFolder = getNotesForFolder(notes, folderid)
-    console.log(notesForFolder);
+    console.log(notesForFolder)
     return (
       <section className='NoteListMain'>
         <HasError>
@@ -34,7 +33,7 @@ class NoteListMain extends React.Component {
               <li key={note.noteId} note={note}>
                 <Note
                   id={note.noteId}
-                  name={note.title}
+                  title={note.title}
                   modified={note.modified}
                 />
               </li>

@@ -35,8 +35,6 @@ class AddNote extends React.Component {
   handleSubmit(event) {
     event.preventDefault();
     const { noteName } = this.state;
-    console.log(event.target.content.value);
-    console.log(event.target.folderid.value);
     const note = {
       title: noteName.value,
       content: event.target.content.value,
@@ -58,6 +56,8 @@ class AddNote extends React.Component {
       })
       .then((note) => {
         this.context.addNote(note)
+        console.log(note)
+        // id: 9, title: "again", modified: "2020-04-09T01:35:29.160Z", content: "horrible", folderid: 1
         this.props.history.goBack()
       // allow parent to perform extra behaviour
       })

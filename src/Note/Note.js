@@ -18,41 +18,43 @@ class Note extends React.Component {
 
   // function that responds to the event of the Delete button being clicked
   handleClickDelete = e => {
-    e.preventDefault()
-    const noteId = this.props.id
+    e.preventDefault();
+    const id = this.props.noteId
+    console.log(id)
 
-    fetch(`${config.API_ENDPOINT}/api/notes/${noteId}`, {
+    fetch(`${config.API_ENDPOINT}/notes/${id}`, {
       method: 'DELETE',
-      /*headers: {
-        'content-type': 'application/json'
+      headers: {
+        'content-type': 'application/json',
+        'authorization': `bearer ${config.API_KEY}`
       },
-      //trying to get date to show in detail view...
-      /*body: JSON.stringify({
-        name: noteId.value,
-        modified: new Date()
-      })   */
+      body: JSON.stringify(id)
     })
-      /*.then(res => {
-        if (!res.ok)
-          return res.json().then(e => Promise.reject(e))
+      .then(res => {
+        if (!res.ok) {
+          return res.json().then(event => Promise.reject(event))
+        }
         return res.json()
-      })*/
-      .then(() => {
-        this.context.deleteNote(noteId)
-        // allow parent to perform extra behaviour
-        this.props.onDeleteNote(noteId)
+      })
+      .then((id) => {
+        this.context.deleteNote(id)
+        this.props.history.goBack()
+        // this.props.onDeleteNote(noteId)
       })
       .catch(error => {
         console.error({ error })
       })
-  }
+    }
   render () {
-    const { name, id, modified } = this.props
+    const { id, title, modified } = this.props
+      /* name: undefined
+          id: undefined
+          modified: undefined*/
     return (
       <div className='Note'>
           <h2 className='Note__title'>
             <Link to={`/note/${id}`}>
-              {name}
+              {title}
             </Link>
           </h2>
         <button

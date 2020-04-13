@@ -25,6 +25,7 @@ class NotePageNav extends React.Component {
     // If expr1 can be converted to true, returns expr1; else, returns expr2.
     // If a value can be converted to true, the value is so-called truthy
     const note = findNote(notes, noteId) || {}
+    console.log(note) // note is empty "{}"
     const folder = findFolder(folders, note.folderid)
     return (
       <div className='NotePageNav'>

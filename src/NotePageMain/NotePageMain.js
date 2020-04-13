@@ -1,10 +1,10 @@
-import React from 'react'
-import Note from '../Note/Note'
-import ApiContext from '../ApiContext'
-import { findNote } from '../notes-helpers'
-import './NotePageMain.css'
-import HasError from '../HasError'
-import PropTypes from 'prop-types'
+import React from 'react';
+import Note from '../Note/Note';
+import ApiContext from '../ApiContext';
+import { findNote } from '../notes-helpers';
+import './NotePageMain.css';
+import HasError from '../HasError';
+import PropTypes from 'prop-types';
 
 class NotePageMain extends React.Component {
   static defaultProps = {
@@ -21,14 +21,17 @@ class NotePageMain extends React.Component {
 
   render () {
     const { notes=[] } = this.context
+    console.log(notes)
     const { noteId } = this.props.match.params
+    console.log(noteId)
     const note = findNote(notes, noteId) ||{content: '' }
+    console.log(note)
     return (
       <section className='NotePageMain'>
         <HasError>
           <Note
-            id={note.id}
-            name={note.name}
+            id={note.noteId}
+            title={note.title}
             modified={note.modified}
             onDeleteNote={this.handleDelete}
           />
