@@ -23,16 +23,17 @@ class NoteListMain extends React.Component {
   render () {
     const { folderid } = this.props.match.params
     const { notes=[] } = this.context
+    console.log(notes) //returns all notes
     const notesForFolder = getNotesForFolder(notes, folderid)
-    console.log(notesForFolder)
+    console.log(notesForFolder) //returns all notes
     return (
       <section className='NoteListMain'>
         <HasError>
           <ul>
             {notesForFolder.map((note) =>
-              <li key={note.noteId} note={note}>
+              <li key={note.id} id={note.id}>
                 <Note
-                  id={note.noteId}
+                  id={note.id}
                   title={note.title}
                   modified={note.modified}
                 />

@@ -20,12 +20,12 @@ class NotePageMain extends React.Component {
   }
 
   render () {
-    const { notes=[] } = this.context
-    console.log(notes)
+    const { notes=[] } = this.context //=[]
+    console.log(notes) //shows all notes
     const { noteId } = this.props.match.params
-    console.log(noteId)
-    const note = findNote(notes, noteId) ||{content: '' }
-    console.log(note)
+    console.log(noteId) //shows id!!!
+    const note = findNote(notes, noteId) || {content: '' }
+    console.log(note) //has no content ""
     return (
       <section className='NotePageMain'>
         <HasError>
