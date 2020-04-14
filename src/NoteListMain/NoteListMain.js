@@ -36,6 +36,7 @@ class NoteListMain extends React.Component {
                   id={note.id}
                   title={note.title}
                   modified={note.modified}
+                  history={this.props.history}
                 />
               </li>
             )}

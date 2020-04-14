@@ -19,41 +19,41 @@ class Note extends React.Component {
   // function that responds to the event of the Delete button being clicked
   handleClickDelete = e => {
     e.preventDefault();
-    const NoteId = this.props.title
-    console.log(NoteId) //undefined
+    const noteId = this.props.id
+    console.log(noteId) //shows id
 
-    fetch(`${config.API_ENDPOINT}/notes/${NoteId}`, {
+    fetch(`${config.API_ENDPOINT}/notes/${noteId}`, {
       method: 'DELETE',
       headers: {
         'content-type': 'application/json',
         'authorization': `bearer ${config.API_KEY}`
-      },
-      body: JSON.stringify(NoteId)
+      }
+      // body: JSON.stringify(noteId)
     })
       .then(res => {
         if (!res.ok) {
           return res.json().then(event => Promise.reject(event))
         }
-        return res.json()
+        return res
       })
-      .then((NoteId) => {
-        this.context.deleteNote(NoteId)
-        this.props.history.goBack()
-        // this.props.onDeleteNote(noteNoteId)
+      .then((res) => {
+        this.context.deleteNote(noteId)
+        this.props.history.push('/')
+        // this.props.onDeleteNote(notenoteId)
       })
       .catch(error => {
         console.error({ error })
       })
     }
   render () {
-    const { NoteId, title, modified } = this.props
+    const { id, title, modified } = this.props
       /* name: undefined
-          NoteId: undefined
+          noteId: undefined
           modified: undefined*/
     return (
       <div className='Note'>
           <h2 className='Note__title'>
-            <Link to={`/note/${NoteId}`}>
+            <Link to={`/note/${id}`}>
               {title}
             </Link>
           </h2>
@@ -82,7 +82,7 @@ class Note extends React.Component {
 
 Note.propTypes = {
   title: PropTypes.string,
-  NoteId: PropTypes.string,
+  noteId: PropTypes.string,
   modified: PropTypes.string,
   onDeleteNote: PropTypes.func
 }

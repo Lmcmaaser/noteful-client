@@ -23,7 +23,7 @@ class NotePageMain extends React.Component {
     const { notes=[] } = this.context //=[]
     console.log(notes) //shows all notes
     const { noteId } = this.props.match.params
-    console.log(noteId) //shows id!!!
+    console.log(noteId) //shows id!!! and sometimes doesn't
     const note = findNote(notes, noteId) || {content: '' }
     console.log(note) //has no content ""
     return (
