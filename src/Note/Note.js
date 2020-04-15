@@ -28,7 +28,6 @@ class Note extends React.Component {
         'content-type': 'application/json',
         'authorization': `bearer ${config.API_KEY}`
       }
-      // body: JSON.stringify(noteId)
     })
       .then(res => {
         if (!res.ok) {
@@ -47,9 +46,6 @@ class Note extends React.Component {
     }
   render () {
     const { id, title, modified } = this.props
-      /* name: undefined
-          noteId: undefined
-          modified: undefined*/
     return (
       <div className='Note'>
           <h2 className='Note__title'>

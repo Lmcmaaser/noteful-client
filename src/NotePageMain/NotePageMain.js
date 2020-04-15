@@ -20,20 +20,21 @@ class NotePageMain extends React.Component {
   }
 
   render () {
-    const { notes=[] } = this.context //=[]
+    const { notes } = this.context //=[]
     console.log(notes) //shows all notes
     const { noteId } = this.props.match.params
-    console.log(noteId) //shows id!!! and sometimes doesn't
-    const note = findNote(notes, noteId) || {content: '' }
+    console.log(noteId) //shows selected note's id
+    const note = findNote(notes, noteId) || { content: '' }
     console.log(note) //has no content ""
     return (
       <section className='NotePageMain'>
         <HasError>
           <Note
-            id={note.noteId}
+            id={note.id}
             title={note.title}
             modified={note.modified}
             onDeleteNote={this.handleDelete}
+            history={this.props.history}
           />
         </HasError>
           <div className='NotePageMain__content'>

@@ -30,7 +30,7 @@ class NotePageNav extends React.Component {
     const note = findNote(notes, noteId) || {}
     console.log(note) // note is empty "{}"
     const folder = findFolder(folders, note.folderid)
-    console.log(folder) //displays id, title, but NOT count, and may only display folderid 1...yeah not at all correct
+    console.log(folder) //displays id, title, but NOT count, and only display folderid 1
     return (
       <div className='NotePageNav'>
         <HasError>

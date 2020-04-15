@@ -37,10 +37,11 @@ class AddNote extends React.Component {
     const { noteName } = this.state;
     const note = {
       title: noteName.value,
-      content: event.target.content.value,
+      content: event.target.noteContent.value,
       folderid: event.target.folderid.value
       // modified: new Date()
     }
+    console.log(note)
     fetch(`${config.API_ENDPOINT}/notes`, {
       method: 'POST',
       headers: {
@@ -57,7 +58,6 @@ class AddNote extends React.Component {
       .then((note) => {
         this.context.addNote(note)
         console.log(note)
-        // id: 9, title: "again", modified: "2020-04-09T01:35:29.160Z", content: "horrible", folderid: 1
         this.props.history.goBack()
       // allow parent to perform extra behaviour
       })
@@ -104,8 +104,9 @@ class AddNote extends React.Component {
             )}
           <label className="noteContent" htmlFor="noteContent">Content * </label>
           <textarea
-            name='content'
+            name="content"
             aria-label="note content"
+            placeholder="Antelopes are mammals."
           >
           </textarea>
           <label className="noteFolder" htmlFor="noteFolder">Select a folder for your note * </label>
