@@ -25,7 +25,7 @@ class NoteListMain extends React.Component {
     const { notes=[] } = this.context
     console.log(notes) //returns all notes
     const notesForFolder = getNotesForFolder(notes, folderid)
-    console.log(notesForFolder) //returns all notes
+    console.log(notesForFolder) //returns empty array
     return (
       <section className='NoteListMain'>
         <HasError>

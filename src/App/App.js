@@ -117,26 +117,18 @@ class App extends Component {
     }
 
     render() {
-        const value = {
-            notes: this.state.notes,
-            folders: this.state.folders,
-            deleteNote: this.handleDeleteNote,
-            addFolder: this.handleAddFolder,
-            addNote: this.handleAddNote
-        };
+      const { store } = this.props
         return (
-            <ApiContext.Provider value={value}>
-                <div className="App">
-                    <nav className="App__nav">{this.renderNavRoutes()}</nav>
-                    <header className="App__header">
-                        <h1>
-                            <Link to="/">Noteful</Link>{' '}
-                            <FontAwesomeIcon icon="check-double" />
-                        </h1>
-                    </header>
-                      <main className="App__main">{this.renderMainRoutes()}</main>
-                </div>
-            </ApiContext.Provider>
+          <div className="App">
+            <nav className="App__nav">{this.renderNavRoutes()}</nav>
+              <header className="App__header">
+                <h1>
+                  <Link to="/">Noteful</Link>{' '}
+                  <FontAwesomeIcon icon="check-double" />
+                </h1>
+              </header>
+            <main className="App__main">{this.renderMainRoutes()}</main>
+          </div>
         );
     }
 }
