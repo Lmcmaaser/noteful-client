@@ -34,7 +34,6 @@ class App extends Component {
     };
 
     handleDeleteNote = noteId => {
-      console.log(noteId, 'handledelete note');
         this.setState({
             notes: this.state.notes.filter(note => note.id !== noteId)
             // filter() method creates an array filled with all array elements that pass a test (provided as a function).

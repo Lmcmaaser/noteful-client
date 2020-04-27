@@ -35,14 +35,13 @@ class AddNote extends React.Component {
   handleSubmit(event) {
     event.preventDefault();
     const { noteName } = this.state;
-    console.log('event.target', event.target);
     const note = {
       title: noteName.value,
       content: event.target.content.value,
       folderid: event.target.folderid.value
       // modified: new Date()
     }
-    console.log(note)
+
     fetch(`${config.API_ENDPOINT}notes`, {
       method: 'POST',
       headers: {
@@ -58,7 +57,6 @@ class AddNote extends React.Component {
       })
       .then((note) => {
         this.context.addNote(note)
-        console.log(note)
         this.props.history.goBack()
       // allow parent to perform extra behaviour
       })

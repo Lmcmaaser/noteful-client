@@ -36,11 +36,10 @@ class AddFolder extends React.Component{
     event.preventDefault();
     // form field from event
     const { name } = this.state;
-    console.log(name);
     const folder = {
       title: name.value
     };
-    console.log(folder);
+    
     fetch(`${config.API_ENDPOINT}folders`, {
       method: 'POST',
       headers: {

@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 
 export default function ValidationError(props) {
   if(props.message) {
-    console.log(props.message);
     return (
       <div
       id= {props.id}
