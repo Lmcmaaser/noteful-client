@@ -48,14 +48,14 @@ class App extends Component {
 
     componentDidMount() {
         Promise.all([
-            fetch(`${config.API_ENDPOINT}/notes`, {
+            fetch(`${config.API_ENDPOINT}notes`, {
               method: 'GET',
               headers: {
                 'content-type': 'application/json',
                 'authorization': `bearer ${config.API_KEY}`
               }
             }),
-            fetch(`${config.API_ENDPOINT}/folders`, {
+            fetch(`${config.API_ENDPOINT}folders`, {
               method: 'GET',
               headers: {
                 'content-type': 'application/json',
@@ -117,18 +117,26 @@ class App extends Component {
     }
 
     render() {
-      const { store } = this.props
+      const value = {
+            notes: this.state.notes,
+            folders: this.state.folders,
+            deleteNote: this.handleDeleteNote,
+            addFolder: this.handleAddFolder,
+            addNote: this.handleAddNote
+        };
         return (
-          <div className="App">
-            <nav className="App__nav">{this.renderNavRoutes()}</nav>
-              <header className="App__header">
-                <h1>
-                  <Link to="/">Noteful</Link>{' '}
-                  <FontAwesomeIcon icon="check-double" />
-                </h1>
-              </header>
-            <main className="App__main">{this.renderMainRoutes()}</main>
-          </div>
+            <ApiContext.Provider value={value}>
+                <div className="App">
+                    <nav className="App__nav">{this.renderNavRoutes()}</nav>
+                    <header className="App__header">
+                        <h1>
+                            <Link to="/">Noteful</Link>{' '}
+                            <FontAwesomeIcon icon="check-double" />
+                        </h1>
+                    </header>
+                      <main className="App__main">{this.renderMainRoutes()}</main>
+                </div>
+            </ApiContext.Provider>
         );
     }
 }

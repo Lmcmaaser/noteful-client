@@ -22,7 +22,7 @@ class Note extends React.Component {
     const noteId = this.props.id
     console.log(noteId) //shows id
 
-    fetch(`${config.API_ENDPOINT}/notes/${noteId}`, {
+    fetch(`${config.API_ENDPOINT}notes/${noteId}`, {
       method: 'DELETE',
       headers: {
         'content-type': 'application/json',

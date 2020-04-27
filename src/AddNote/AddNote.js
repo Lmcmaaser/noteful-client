@@ -35,14 +35,15 @@ class AddNote extends React.Component {
   handleSubmit(event) {
     event.preventDefault();
     const { noteName } = this.state;
+    console.log('event.target', event.target);
     const note = {
       title: noteName.value,
-      content: event.target.noteContent.value,
+      content: event.target.content.value,
       folderid: event.target.folderid.value
       // modified: new Date()
     }
     console.log(note)
-    fetch(`${config.API_ENDPOINT}/notes`, {
+    fetch(`${config.API_ENDPOINT}notes`, {
       method: 'POST',
       headers: {
         'Authorization': `bearer ${config.API_KEY}`,
@@ -107,6 +108,8 @@ class AddNote extends React.Component {
             name="content"
             aria-label="note content"
             placeholder="Antelopes are mammals."
+            className="noteContent"
+            htmlFor="noteContent"
           >
           </textarea>
           <label className="noteFolder" htmlFor="noteFolder">Select a folder for your note * </label>
