@@ -51,14 +51,14 @@ class App extends Component {
               method: 'GET',
               headers: {
                 'content-type': 'application/json',
-                'authorization': `bearer ${config.API_KEY}`
+                'authorization': `bearer ${config.API_TOKEN}`
               }
             }),
             fetch(`${config.API_ENDPOINT}folders`, {
               method: 'GET',
               headers: {
                 'content-type': 'application/json',
-                'authorization': `bearer ${config.API_KEY}`
+                'authorization': `bearer ${config.API_TOKEN}`
             }
           })
             //need to submit the name of the new folder/new note

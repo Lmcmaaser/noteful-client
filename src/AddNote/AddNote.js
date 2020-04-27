@@ -45,7 +45,7 @@ class AddNote extends React.Component {
     fetch(`${config.API_ENDPOINT}notes`, {
       method: 'POST',
       headers: {
-        'Authorization': `bearer ${config.API_KEY}`,
+        'Authorization': `bearer ${config.API_TOKEN}`,
         'content-type': 'application/json'
       },
       body: JSON.stringify(note)
