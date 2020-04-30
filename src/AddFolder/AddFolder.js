@@ -92,6 +92,7 @@ class AddFolder extends React.Component{
             name="name"
             id="name"
             placeholder="Upcoming"
+            required
             aria-label="folder name"
             aria-required="true"
             aria-invalid={ this.state.name.touched && !!nameError }

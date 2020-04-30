@@ -91,6 +91,7 @@ class AddNote extends React.Component {
             type="text"
             name="noteName"
             id="noteName"
+            required
             aria-label="note name"
             aria-required="true"
             aria-invalid={ this.state.noteName.touched && !!noteNameError }
@@ -108,11 +109,13 @@ class AddNote extends React.Component {
             placeholder="Antelopes are mammals."
             className="noteContent"
             htmlFor="noteContent"
+            required
           >
           </textarea>
           <label className="noteFolder" htmlFor="noteFolder">Select a folder for your note * </label>
           <select
             name="folderid"
+            required
             aria-label="select note folder"
           >
             {this.context.folders.map(folder =>
